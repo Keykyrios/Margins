@@ -1,67 +1,80 @@
-# MARGINS: FACE REALITY.
+# MARGINS
 
-> [!IMPORTANT]
-> **Stop calculating in your head.** 
-> **Stop lying to yourself.**
-> **Face the math.**
+```text
+=============================================================
+|                                                           |
+|                       M A R G I N S                       |
+|                                                           |
+=============================================================
+```
 
----
-
-## WHAT IS THIS?
-
-MARGINS is a brutalist attendance calculator designed for the academic trenches. It doesn't sugarcoat your situation. It doesn't offer "gentle reminders." It tells you exactly how many classes you can bunk (or how many you need to attend) before your grade gets cooked.
-
-Built with a Neo-Brutalist aesthetic, it's fast, high-contrast, and emotionally honest.
+> **CORE PRINCIPLE:** Stop calculating in your head. Stop lying to yourself. Face the math.
 
 ---
 
-## KEY FEATURES
+### [ 01 ] OVERVIEW
 
-- **Precision Calculation**: Handles the "Net Gain" math of future attendance. We account for the fact that every class you attend only closes the gap by (100 - Required)%.
-- **CAT-MOSPHERE**: Dynamic visual feedback via our "Cat States":
-  - **Good**: W. Go touch grass.
-  - **Borderline**: Living on the edge.
-  - **Cooked**: RIP. Mathematical impossibility or critical debt.
-- **Division-by-Zero Guardrails**: Robust logic that prevents the app from breaking when you enter a 100% requirement (which normally leads to infinite series).
-- **Quick Actions**: One-click updates for "What if I Attend/Bunk today?" scenarios.
+MARGINS is a minimalist attendance tracking utility built for high-stakes academic environments. It provides precise calculations on class attendance requirements, removing the guesswork from schedule management.
+
+The interface follows a Neo-Brutalist design language, prioritizing high contrast, raw structural elements, and immediate data clarity.
 
 ---
 
-## TECH STACK
+### [ 02 ] SYSTEM LOGIC
 
-- **React**: Core logic and state management.
-- **Tailwind CSS**: Custom "Brutal" utility classes for that high-contrast look.
-- **Dynamic SVGs**: Hand-crafted SVG fallbacks for when the internet is struggling.
-- **Neo-Brutalist Design System**: 
-  - `Shadows`: 10px 10px 0 0 rgba(0,0,0,1)
-  - `Borders`: 6px Solid Black
-  - `Typography`: Heavy-weighted, black-letter uppercase headers.
+The application calculates the exact effort required to maintain or reach a target percentage. 
 
----
-
-## GETTING STARTED
-
-1. **Clone the energy:**
-   ```bash
-   git clone https://github.com/keykyrios/margins.git
-   ```
-2. **Open index.html** in any modern browser. (Yes, it's a standalone React implementation for maximum portability).
-3. **Face the Stats.** Enter your conducted, attended, and required percentages.
+| Feature | Description |
+| :--- | :--- |
+| **Precision Analysis** | Accounts for the net gain of future attendance. |
+| **Dynamic Feedback** | Visual states (Neutral, Good, Borderline, Critical) based on data. |
+| **Edge-Case Safety** | Robust handling for 100% requirements and zero-conducted scenarios. |
+| **One-Tap Simulation** | Simulate "Attend" or "Bunk" actions to see immediate impact. |
 
 ---
 
-## THE MATH BEHIND THE MADNESS
+### [ 03 ] THE MATHEMATICS
 
-Most people think if they miss 5 classes, they just need to attend 5 classes. **WRONG.**
-To reach target %:
-$$\text{Classes to Attend} = \left\lceil \frac{\text{Req} \times \text{Conducted} - \text{Attended} \times 100}{100 - \text{Req}} \right\rceil$$
+To reach a target percentage (Req) from current stats (Conducted, Attended):
 
-Our engine handles the ceiling functions and edge cases (like requiring 100%) so you don't have to suffer.
+```text
+Classes to Attend = Ceil( (Req * Conducted - Attended * 100) / (100 - Req) )
+```
+
+> **Note:** Every future class attended only closes the deficit by (100 - Req)%. The deeper the debt, the steeper the climb.
 
 ---
 
-## BUILT BY
+### [ 04 ] TECHNICAL SPECIFICATION
 
-Developed with caffeine and cynical realism by **Mitrajit Ghorui**.
+- **Stack**: React / Tailwind CSS / Vanilla JS
+- **UI Architecture**: Custom Brutalist component library (Containers, Inputs, Buttons)
+- **Visuals**: Dynamic SVG rendering system with fallback logic
+- **Design Tokens**:
+  - Border: `6px Solid Black`
+  - Shadow: `10px 10px 0 0 rgba(0,0,0,1)`
+  - Palette: Indigo (Primary), Yellow (Warning), Red (Critical)
 
-[Portfolio](https://keykyrios.github.io/) | [Face Reality](file:///d:/Projects/MARGINS/index.html)
+---
+
+### [ 05 ] DEPLOYMENT
+
+```bash
+# Clone the repository
+git clone https://github.com/keykyrios/margins.git
+
+# Execution
+# Open index.html in any modern browser. 
+# Portable React build, no build steps required for preview.
+```
+
+---
+
+```text
++-----------------------------------------------------------+
+|  Built by Mitrajit Ghorui.                                |
+|                                           |
++-----------------------------------------------------------+
+```
+
+[Portfolio](https://keykyrios.github.io/) | [System Link](file:///d:/Projects/MARGINS/index.html)
