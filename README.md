@@ -73,8 +73,8 @@ git clone https://github.com/keykyrios/margins.git
 ```text
 +-----------------------------------------------------------+
 |  Built by Mitrajit Ghorui.                                |
-|                                           |
+|                                                           |
 +-----------------------------------------------------------+
 ```
 
-[Portfolio](https://keykyrios.github.io/) | [System Link](file:///d:/Projects/MARGINS/index.html)
+[Portfolio](https://keykyrios.github.io/) 
