@@ -234,25 +234,25 @@ const BrutalInput = ({ label, value, onChange, placeholder, type = "number", min
 
       <div className="relative">
 
-        <input type={type} min={min} value={value} onChange={onChange} placeholder={placeholder} onFocus={() =>
-          setIsFocused(true)}
-
+        <input
+          type={type}
+          min={min}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-
           className={`
-
     w-full text-2xl font-bold p-4
-
     border-[4px] border-black rounded-lg
-
     outline-none transition-all duration-200
-
-    ${isFocused ? 'bg-yellow-200 shadow-[8px_8px_0_0_rgba(0,0,0,1)] -translate-y-1 -translate-x-1' : 'bg-gray-50
-    shadow-[4px_4px_0_0_rgba(0,0,0,1)]'}
-
+    ${
+      isFocused
+        ? 'bg-yellow-200 shadow-[8px_8px_0_0_rgba(0,0,0,1)] -translate-y-1 -translate-x-1'
+        : 'bg-gray-50 shadow-[4px_4px_0_0_rgba(0,0,0,1)]'
+    }
     `}
-
-    />
+        />
 
         <div className={`absolute -bottom-2 -right-2 w-4 h-4 bg-black rounded-full transition-transform ${isFocused
           ? 'scale-150' : ''}`} />
@@ -376,17 +376,34 @@ const analyzeAttendance = (conducted, attended, requiredPercent) => {
 
 
 
-  if (requiredPercent === 100 && currentPercent < 100) { level = "cooked"; } return {
-    currentPercent:
-      currentPercent.toFixed(2), isSafe, classesToBunk, classesToAttend, level, deficit: conducted - attended // used to
-    render explanation
+  if (requiredPercent === 100 && currentPercent < 100) {
+    level = "cooked";
+  }
+
+  return {
+    currentPercent: currentPercent.toFixed(2),
+    isSafe,
+    classesToBunk,
+    classesToAttend,
+    level,
+    deficit: conducted - attended, // used to render explanation
   };
-}; //==========================================// 🚀 MAIN APP COMPONENT
-    //==========================================export default function App() { const [conductedStr,
-    setConductedStr]=useState(""); const [attendedStr, setAttendedStr] = useState(""); const [requiredStr,
-  setRequiredStr] = useState("75"); const [result, setResult] = useState(null); const [isCalculating,
-    setIsCalculating] = useState(false); const [error, setError] = useState(""); const [shake, setShake] = useState(false);
-const resultRef = useRef(null); const handleCalculate = () => {
+};
+
+//==========================================
+// 🚀 MAIN APP COMPONENT
+//==========================================
+export default function App() {
+  const [conductedStr, setConductedStr] = useState("");
+  const [attendedStr, setAttendedStr] = useState("");
+  const [requiredStr, setRequiredStr] = useState("75");
+  const [result, setResult] = useState(null);
+  const [isCalculating, setIsCalculating] = useState(false);
+  const [error, setError] = useState("");
+  const [shake, setShake] = useState(false);
+  const resultRef = useRef(null);
+
+  const handleCalculate = () => {
 
   setError("");
 
@@ -413,15 +430,14 @@ const resultRef = useRef(null); const handleCalculate = () => {
   }
 
   if (conducted < 0 || attended < 0 || required < 0) {
-    setError("Negative numbers? Are you time traveling to skip
-      classes ? "); triggerShake(); return; } if (attended> conducted) {
-
-      setError("You attended more classes than conducted? Stop the cap. 🧢");
-
+    setError("Negative numbers? Are you time traveling to skip classes?");
     triggerShake();
-
     return;
-
+  }
+  if (attended > conducted) {
+    setError("You attended more classes than conducted? Stop the cap. 🧢");
+    triggerShake();
+    return;
   }
 
   if (required > 100) {
@@ -527,57 +543,66 @@ const addClass = (type) => {
 
 
 const renderCat = () => {
-
   if (!result && !isCalculating) {
-
-    return
-    <DynamicImage src="https://ik.imagekit.io/zti35iikw/neutral.jpg?tr=w-400" alt="Neutral"
-      FallbackSVG={CatNeutralSVG}
-      className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] transition-transform hover:scale-105" />
-      ;
-
+    return (
+      <DynamicImage
+        src="https://ik.imagekit.io/zti35iikw/neutral.jpg?tr=w-400"
+        alt="Neutral"
+        FallbackSVG={CatNeutralSVG}
+        className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] transition-transform hover:scale-105"
+      />
+    );
   }
 
   if (isCalculating) {
-
-    return
-    <DynamicImage src="https://ik.imagekit.io/zti35iikw/neutral.jpg?tr=w-400" alt="Spinning Neutral"
-      FallbackSVG={CatNeutralSVG}
-      className="w-full max-w-[250px] mx-auto animate-spin drop-shadow-[8px_8px_0_rgba(0,0,0,1)]" />;
-
+    return (
+      <DynamicImage
+        src="https://ik.imagekit.io/zti35iikw/neutral.jpg?tr=w-400"
+        alt="Spinning Neutral"
+        FallbackSVG={CatNeutralSVG}
+        className="w-full max-w-[250px] mx-auto animate-spin drop-shadow-[8px_8px_0_rgba(0,0,0,1)]"
+      />
+    );
   }
-
-
 
   switch (result.level) {
-
     case 'good':
-
-      return
-      <DynamicImage src="https://ik.imagekit.io/zti35iikw/Good.png?tr=w-400" alt="Good" FallbackSVG={CatHappySVG}
-        className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] animate-bounce" />;
-
+      return (
+        <DynamicImage
+          src="https://ik.imagekit.io/zti35iikw/Good.png?tr=w-400"
+          alt="Good"
+          FallbackSVG={CatHappySVG}
+          className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] animate-bounce"
+        />
+      );
     case 'borderline':
-
-      return
-      <DynamicImage src="https://ik.imagekit.io/zti35iikw/border.png?tr=w-400" alt="Borderline"
-        FallbackSVG={CatSweatingSVG}
-        className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] animate-pulse" />;
-
+      return (
+        <DynamicImage
+          src="https://ik.imagekit.io/zti35iikw/border.png?tr=w-400"
+          alt="Borderline"
+          FallbackSVG={CatSweatingSVG}
+          className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] animate-pulse"
+        />
+      );
     case 'cooked':
-
-      return
-      <DynamicImage src="https://i.imgur.com/uZ7OK8i.jpeg" alt="Cooked" FallbackSVG={CatCookedSVG}
-        className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] animate-wiggle" />;
-
+      return (
+        <DynamicImage
+          src="https://i.imgur.com/uZ7OK8i.jpeg"
+          alt="Cooked"
+          FallbackSVG={CatCookedSVG}
+          className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)] animate-wiggle"
+        />
+      );
     default:
-
-      return
-      <DynamicImage src="https://ik.imagekit.io/zti35iikw/neutral.jpg?tr=w-400" alt="Neutral"
-        FallbackSVG={CatNeutralSVG} className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)]" />;
-
+      return (
+        <DynamicImage
+          src="https://ik.imagekit.io/zti35iikw/neutral.jpg?tr=w-400"
+          alt="Neutral"
+          FallbackSVG={CatNeutralSVG}
+          className="w-full max-w-[250px] mx-auto drop-shadow-[8px_8px_0_rgba(0,0,0,1)]"
+        />
+      );
   }
-
 };
 
 
